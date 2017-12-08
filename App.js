@@ -1,17 +1,19 @@
 import React from 'react';
-import { StyleSheet, Text, View } from 'react-native';
-
-const styles = StyleSheet.create({
-  container: {
-    flex: 1,
-    backgroundColor: '#fff',
-    alignItems: 'center',
-    justifyContent: 'center',
-  },
-});
+import styled from 'styled-components/native';
 
 export default () => (
-  <View style={styles.container}>
-    <Text>Open up App.js to start working on your app!</Text>
-  </View>
+  <Wrapper>
+    <Title>Hello World!</Title>
+  </Wrapper>
 );
+
+const Wrapper = styled.View`
+  flex: 1;
+  background-color: #000;
+  align-items: center;
+  justify-content: center;
+`;
+
+const Title = styled.Text`
+  color: #f4f4f4;
+`;
