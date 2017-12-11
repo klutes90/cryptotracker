@@ -1,4 +1,4 @@
-import BaseURL from '../../../utils/constants';
+import { URL } from '../../../utils/constants';
 import {
   FETCHING_COIN_DATA,
   FETCHING_COIN_DATA_FAIL,
@@ -10,7 +10,7 @@ export default function fetchCoinData() {
     dispatch({ type: FETCHING_COIN_DATA });
 
     try {
-      const res = await fetch(`${BaseURL}/v1/ticker/?limit=15`);
+      const res = await fetch(`${URL}/v1/ticker/?limit=15`);
       dispatch({ type: FETCHING_COIN_DATA_SUCCESS, payload: res.data });
     } catch (err) {
       dispatch({ type: FETCHING_COIN_DATA_FAIL, payload: err });

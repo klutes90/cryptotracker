@@ -11,7 +11,7 @@ const initialState = {
   errorMessage: undefined,
 };
 
-export default function fetchingCoidData(state = initialState, action) {
+export default function fetchingCoinData(state = initialState, action) {
   switch (action.type) {
     case FETCHING_COIN_DATA:
       return Object.assign({}, state, {

@@ -4,7 +4,7 @@ import promise from 'redux-promise';
 import thunk from 'redux-thunk';
 import devTools from 'remote-redux-devtools';
 
-import RootReducer from './data';
+import RootReducer from './data/reducers';
 
 const middlewares = [promise, thunk];
 
