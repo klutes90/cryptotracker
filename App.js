@@ -4,13 +4,13 @@ import { Provider } from 'react-redux';
 
 import Store from './src/Store';
 import Header from './src/components/atoms/Header';
-import TrackingContainer from './src/components/organisms/TrackingContainer';
+import CoinContainer from './src/containers/CoinContainer';
 
 export default () => (
   <Provider store={Store}>
     <Wrapper>
       <Header />
-      <TrackingContainer />
+      <CoinContainer />
     </Wrapper>
   </Provider>
 );
