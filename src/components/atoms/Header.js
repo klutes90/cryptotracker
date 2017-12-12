@@ -3,7 +3,7 @@ import styled from 'styled-components/native';
 
 export default () => (
   <Wrapper>
-    <Title>CryptoTrack</Title>
+    <Title>{'CryptoTrack'.toUpperCase()}</Title>
   </Wrapper>
 );
 
@@ -14,6 +14,6 @@ const Wrapper = styled.View`
 `;
 
 const Title = styled.Text`
-  font-weight: bold;
+  font-family: 'bebas-neue';
   font-size: 20;
 `;
