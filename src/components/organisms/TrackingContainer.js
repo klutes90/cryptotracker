@@ -10,6 +10,14 @@ export default class TrackingContainer extends React.Component {
     this.props.fetchCoinData();
   }
 
+  isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+    const paddingToBottom = 20;
+    const close =
+      layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
+
+    if (close) this.props.fetchMoreCoinData();
+  };
+
   renderList() {
     const { crypto } = this.props;
 
@@ -42,7 +50,11 @@ export default class TrackingContainer extends React.Component {
       );
     }
 
-    return <Scrollable>{this.renderList()}</Scrollable>;
+    return (
+      <Scrollable onScroll={({ nativeEvent }) => this.isCloseToBottom(nativeEvent)}>
+        {this.renderList()}
+      </Scrollable>
+    );
   }
 }
 
@@ -61,4 +73,5 @@ TrackingContainer.propTypes = {
     errorMessage: PropTypes.string,
   }).isRequired,
   fetchCoinData: PropTypes.func.isRequired,
+  fetchMoreCoinData: PropTypes.func.isRequired,
 };

@@ -15,5 +15,6 @@ const Wrapper = styled.View`
 
 const Title = styled.Text`
   font-family: 'bebas-neue';
-  font-size: 20;
+  font-size: 25;
+  margin-bottom: 25px;
 `;

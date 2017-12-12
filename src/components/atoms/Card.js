@@ -13,8 +13,7 @@ const Card = ({
       <Seperator>|</Seperator>
       <Name>{name}</Name>
       <Price>
-        {priceUsd}
-        <Money>$</Money>
+        {priceUsd} <Money>$</Money>
       </Price>
     </InfoContainer>
     <StatsContainer>
@@ -44,6 +43,8 @@ const InfoContainer = styled.View`
   display: flex;
   flex-direction: row;
   margin-bottom: 15px;
+  align-items: center;
+  justify-content: space-around;
 `;
 
 const StatsContainer = styled.View`
@@ -52,16 +53,19 @@ const StatsContainer = styled.View`
   border-top-color: #fafafa;
   padding: 10px;
   flex-direction: row;
+  align-items: center;
   justify-content: space-around;
 `;
 
 const Hour = styled.Text`
+  font-family: 'montserrat';
   color: ${props => (props.positive ? '#00BFA5' : '#DD2C00')};
   font-weight: bold;
   margin-left: 5px;
 `;
 
 const Day = styled.Text`
+  font-family: 'montserrat';
   color: ${props => (props.positive ? '#00BFA5' : '#DD2C00')};
   font-weight: bold;
   margin-left: 5px;
@@ -73,6 +77,7 @@ const CoinPic = styled.Image`
 `;
 
 const Symbol = styled.Text`
+  font-family: 'montserrat';
   margin-top: 10px;
   margin-left: 20px;
   margin-right: 5px;
@@ -80,16 +85,19 @@ const Symbol = styled.Text`
 `;
 
 const Seperator = styled.Text`
+  font-family: 'montserrat';
   margin-top: 10px;
 `;
 
 const Name = styled.Text`
+  font-family: 'montserrat';
   margin-top: 10px;
   margin-left: 5px;
   margin-right: 20px;
 `;
 
 const Price = styled.Text`
+  font-family: 'montserrat';
   margin-top: 10px;
   margin-left: auto;
   margin-right: 10px;
@@ -97,6 +105,7 @@ const Price = styled.Text`
 `;
 
 const Money = styled.Text`
+  font-family: 'montserrat';
   font-weight: bold;
 `;
 

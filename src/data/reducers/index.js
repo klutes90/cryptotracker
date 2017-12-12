@@ -1,6 +1,7 @@
 import { combineReducers } from 'redux';
-import CryptoReducer from './CryptoReducer';
+import { fetchingCoinData, fetchingMoreCoinData } from './CryptoReducer';
 
 export default combineReducers({
-  crypto: CryptoReducer,
+  crypto: fetchingCoinData,
+  moreCrypto: fetchingMoreCoinData,
 });
