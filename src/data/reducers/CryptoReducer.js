@@ -5,7 +5,7 @@ import {
 } from '../constants';
 
 const initialState = {
-  isFetching: false,
+  isFetching: true,
   data: [],
   error: false,
   errorMessage: undefined,
@@ -16,7 +16,7 @@ export default function fetchingCoinData(state = initialState, action) {
     case FETCHING_COIN_DATA:
       return Object.assign({}, state, {
         isFetching: true,
-        data: undefined,
+        data: [],
         error: false,
         errorMessage: undefined,
       });
