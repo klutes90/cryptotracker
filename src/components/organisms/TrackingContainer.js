@@ -6,6 +6,10 @@ import Spinner from 'react-native-loading-spinner-overlay';
 import Card from '../atoms/Card';
 
 export default class TrackingContainer extends React.Component {
+  state = {
+    called: false,
+  };
+
   async componentWillMount() {
     this.props.fetchCoinData();
   }
@@ -15,27 +19,14 @@ export default class TrackingContainer extends React.Component {
     const close =
       layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
 
-    if (close) this.props.fetchMoreCoinData();
+    if (close && !this.state.called) {
+      this.props.fetchMoreCoinData();
+      this.setState({ called: true });
+    }
   };
 
-  renderList() {
-    const { crypto } = this.props;
-
-    return crypto.data.map(coin => (
-      <Card
-        key={coin.name}
-        name={coin.name}
-        symbol={coin.symbol}
-        rank={coin.rank}
-        priceUsd={coin.price_usd}
-        percentChange24h={coin.percent_change_24h}
-        percentChange7d={coin.percent_change_7d}
-      />
-    ));
-  }
-
   render() {
-    const { crypto } = this.props;
+    const { crypto, moreCrypto } = this.props;
 
     if (crypto.isFetching) {
       return (
@@ -52,7 +43,28 @@ export default class TrackingContainer extends React.Component {
 
     return (
       <Scrollable onScroll={({ nativeEvent }) => this.isCloseToBottom(nativeEvent)}>
-        {this.renderList()}
+        {crypto.data.map(coin => (
+          <Card
+            key={coin.name}
+            name={coin.name}
+            symbol={coin.symbol}
+            rank={coin.rank}
+            priceUsd={coin.price_usd}
+            percentChange24h={coin.percent_change_24h}
+            percentChange7d={coin.percent_change_7d}
+          />
+        ))}
+        {moreCrypto.data.map(coin => (
+          <Card
+            key={coin.name}
+            name={coin.name}
+            symbol={coin.symbol}
+            rank={coin.rank}
+            priceUsd={coin.price_usd}
+            percentChange24h={coin.percent_change_24h}
+            percentChange7d={coin.percent_change_7d}
+          />
+        ))}
       </Scrollable>
     );
   }
@@ -72,6 +84,21 @@ TrackingContainer.propTypes = {
     error: PropTypes.bool,
     errorMessage: PropTypes.string,
   }).isRequired,
+  moreCrypto: PropTypes.shape({
+    isFetching: PropTypes.bool,
+    data: PropTypes.array,
+    error: PropTypes.bool,
+    errorMessage: PropTypes.string,
+  }),
   fetchCoinData: PropTypes.func.isRequired,
   fetchMoreCoinData: PropTypes.func.isRequired,
+};
+
+TrackingContainer.defaultProps = {
+  moreCrypto: {
+    isFetching: true,
+    data: [],
+    error: false,
+    errorMessage: undefined,
+  },
 };

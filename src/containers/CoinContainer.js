@@ -5,8 +5,12 @@ import { bindActionCreators } from 'redux';
 import * as actions from '../data/actions/CoinData';
 import TrackingContainer from '../components/organisms/TrackingContainer';
 
-const CoinContainer = ({ actions: { fetchCoinData }, crypto }) => (
-  <TrackingContainer fetchCoinData={fetchCoinData} crypto={crypto} />
+const CoinContainer = ({ actions: { fetchCoinData, fetchMoreCoinData }, crypto }) => (
+  <TrackingContainer
+    fetchCoinData={fetchCoinData}
+    fetchMoreCoinData={fetchMoreCoinData}
+    crypto={crypto}
+  />
 );
 
 CoinContainer.propTypes = {
@@ -17,6 +21,7 @@ CoinContainer.propTypes = {
   }),
   actions: PropTypes.shape({
     fetchCoinData: PropTypes.func,
+    fetchMoreCoinData: PropTypes.func,
   }).isRequired,
 };
 
