@@ -22,7 +22,7 @@ export async function fetchCoinData() {
   };
 }
 
-export function fetchMoreCoinData() {
+export async function fetchMoreCoinData() {
   return async (dispatch) => {
     dispatch({ type: FETCHING_MORE_COIN_DATA });
 

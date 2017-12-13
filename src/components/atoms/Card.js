@@ -33,7 +33,7 @@ Card.propTypes = {
 
 const Wrapper = styled.View`
   display: flex;
-  margin-bottom: 20px;
+  margin-bottom: 35px;
   border-bottom-width: 3px;
   border-bottom-color: #e5e5e5;
   padding: 20px;

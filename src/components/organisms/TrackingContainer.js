@@ -14,7 +14,7 @@ export default class TrackingContainer extends React.Component {
     this.props.fetchCoinData();
   }
 
-  isCloseToBottom = ({ layoutMeasurement, contentOffset, contentSize }) => {
+  isCloseToBottom = async ({ layoutMeasurement, contentOffset, contentSize }) => {
     const paddingToBottom = 20;
     const close =
       layoutMeasurement.height + contentOffset.y >= contentSize.height - paddingToBottom;
@@ -54,6 +54,16 @@ export default class TrackingContainer extends React.Component {
             percentChange7d={coin.percent_change_7d}
           />
         ))}
+        {moreCrypto.isFetching && (
+          <Wrapper>
+            <Spinner
+              visibile
+              textContent="Loading..."
+              textStyle={{ color: '#253145' }}
+              animation="fade"
+            />
+          </Wrapper>
+        )}
         {moreCrypto.data.map(coin => (
           <Card
             key={coin.name}
@@ -89,16 +99,7 @@ TrackingContainer.propTypes = {
     data: PropTypes.array,
     error: PropTypes.bool,
     errorMessage: PropTypes.string,
-  }),
+  }).isRequired,
   fetchCoinData: PropTypes.func.isRequired,
   fetchMoreCoinData: PropTypes.func.isRequired,
-};
-
-TrackingContainer.defaultProps = {
-  moreCrypto: {
-    isFetching: true,
-    data: [],
-    error: false,
-    errorMessage: undefined,
-  },
 };
