@@ -34,8 +34,6 @@ Card.propTypes = {
 const Wrapper = styled.View`
   display: flex;
   margin-bottom: 35px;
-  border-bottom-width: 3px;
-  border-bottom-color: #e5e5e5;
   padding: 20px;
 `;
 
@@ -50,7 +48,7 @@ const InfoContainer = styled.View`
 const StatsContainer = styled.View`
   display: flex;
   border-top-width: 2px;
-  border-top-color: #fafafa;
+  border-top-color: #5f4b8b;
   padding: 10px;
   flex-direction: row;
   align-items: center;
